@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Шоколадное безумие - KatyBakery</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fdf8f4;
+            color: #2c241a;
+            line-height: 1.5;
+        }
+
+        /* ===== ШАПКА ===== */
+        .site-header {
+            background: #FFFFFF;
+            padding: 1rem 2rem;
+            border-bottom: 1px solid #F0E3D8;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.02);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            font-family: 'Cormorant Garamond', serif;
+            color: #5C3B1F;
+            text-decoration: none;
+            transition: opacity 0.2s ease;
+            letter-spacing: -0.02em;
+            cursor: pointer;
+        }
+
+        .logo:hover {
+            opacity: 0.8;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 1.8rem;
+            flex-wrap: wrap;
+        }
+
+        .social-links-header {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links-header a {
+            color: #5C3B1F;
+            font-size: 1.5rem;
+            transition: transform 0.2s, color 0.2s;
+        }
+
+        .social-links-header a:hover {
+            color: #B16233;
+            transform: scale(1.05);
+        }
+
+        .phone-link {
+            font-weight: 600;
+            font-size: 0.95rem;
+            background: #F9EFE7;
+            padding: 0.5rem 1rem;
+            border-radius: 60px;
+            color: #4F2D15;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: background 0.2s;
+        }
+
+        .phone-link:hover {
+            background: #EEDDCB;
+            color: #2C1A0C;
+        }
+
+        /* ===== ОСНОВНОЙ КОНТЕНТ ===== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        .product-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .product-gallery {
+            flex: 1.2;
+            min-width: 280px;
+            position: relative;
+        }
+
+        .main-image {
+            width: 100%;
+            border-radius: 24px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+            background: #f0e8e0;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .main-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        .swipe-hint {
+            position: absolute;
+            bottom: 12px;
+            right: 12px;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(4px);
+            padding: 4px 10px;
+            border-radius: 40px;
+            font-size: 11px;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            pointer-events: none;
+        }
+
+        .thumbnail-row {
+            display: flex;
+            gap: 12px;
+            margin-top: 16px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .thumbnail {
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            object-fit: cover;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.2s;
+            opacity: 0.7;
+        }
+
+        .thumbnail.active {
+            border-color: #b8a28c;
+            opacity: 1;
+        }
+
+        .product-info {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .product-title {
+        font-size: 2rem;
+        font-weight: 600;
+        font-family: 'Georgia', serif;
+        color: #3a2c21;
+        margin-bottom: 0.5rem;
+        padding-bottom: 12px;
+        border-bottom: 1px solid #e6dbd0;
+}
+
+        .product-artikul {
+            font-size: 0.85rem;
+            color: #8f7a68;
+            margin-bottom: 1rem;
+        }
+
+        .price-block {
+            margin: 1rem 0 1.5rem;
+            background: #fef7f0;
+            padding: 0.8rem 1rem;
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        .price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #9b6e4c;
+        }
+
+        .price-unit {
+            font-size: 1rem;
+            color: #7d6652;
+        }
+
+        .info-card {
+            background: white;
+            border-radius: 20px;
+            padding: 1.2rem;
+            margin-bottom: 1rem;
+            border: 1px solid #f0e4d8;
+        }
+
+        .info-header {
+            font-weight: 700;
+            font-size: 1rem;
+            color: #5c4431;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .info-header i {
+            color: #b8a28c;
+            font-size: 1.1rem;
+        }
+
+        .info-text {
+            color: #3e3328;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .badge {
+            background: #f4ede6;
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            color: #8b694c;
+            margin-top: 8px;
+        }
+
+        /* Блок калорийности */
+        .calories-block {
+            background: white;
+            border-radius: 20px;
+            padding: 1.2rem;
+            margin-bottom: 1rem;
+            border: 1px solid #f0e4d8;
+        }
+
+        .calories-title {
+            font-weight: 700;
+            font-size: 1rem;
+            color: #5c4431;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .calories-value {
+            font-size: 0.95rem;
+            color: #3e3328;
+            line-height: 1.5;
+        }
+
+        /* Детальное описание снизу */
+        .detailed-description {
+            background: white;
+            border-radius: 24px;
+            padding: 1.8rem;
+            margin-top: 1rem;
+            border: 1px solid #f0e4d8;
+        }
+
+        .detailed-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            font-family: 'Georgia', serif;
+            color: #3a2c21;
+            margin-bottom: 1rem;
+        }
+
+        .description-text {
+            color: #3e3328;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .footer-note {
+            text-align: center;
+            padding: 1rem;
+            background: #fff5ed;
+            border-radius: 20px;
+            margin-top: 1.5rem;
+            font-size: 0.8rem;
+            color: #7b624b;
+        }
+
+        /* Модальное окно */
+        .modal-full {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.95);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-image {
+            max-width: 92%;
+            max-height: 85vh;
+            display: block;
+            object-fit: contain;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 36px;
+            cursor: pointer;
+            background: rgba(0,0,0,0.6);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2001;
+        }
+
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+            background: rgba(0,0,0,0.5);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2001;
+        }
+
+        .nav-prev { left: 20px; }
+        .nav-next { right: 20px; }
+
+        .image-counter-modal {
+            position: absolute;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.6);
+            color: white;
+            padding: 6px 18px;
+            border-radius: 40px;
+            font-size: 14px;
+            z-index: 2001;
+        }
+
+        @media (max-width: 700px) {
+            .site-header {
+                padding: 0.8rem 1rem;
+            }
+            .logo {
+                font-size: 1.5rem;
+            }
+            .product-title {
+                font-size: 1.6rem;
+            }
+            .thumbnail {
+                width: 65px;
+                height: 65px;
+            }
+            .detailed-title {
+                font-size: 1.2rem;
+            }
+        }
+                
+                .filling-section {
+            margin: 20px 0;
+            background: white;
+            border-radius: 20px;
+            padding: 16px 20px;
+            border: 1px solid #f0e4d8;
+        }
+
+        .filling-title {
+            font-weight: 700;
+            font-size: 1rem;
+            color: #5c3b1f;
+            margin-bottom: 14px;
+            letter-spacing: 0.5px;
+        }
+
+        .filling-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .filling-option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            color: #3e3328;
+        }
+
+        .filling-option input[type="radio"] {
+            width: 18px;
+            height: 18px;
+            accent-color: #c29776;
+            cursor: pointer;
+            margin: 0;
+        }
+
+        .filling-option span {
+            cursor: pointer;
+        }
+
+        .filling-option:hover {
+            color: #9b6e4c;
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===== ШАПКА: логотип ведёт на главную страницу ===== -->
+<header class="site-header">
+    <div class="header-container">
+        <a href="index.html" class="logo">KatyBakery</a>
+    </div>
+</header>
+
+<main class="container">
+    <div class="product-grid">
+        <!-- Левая колонка: галерея -->
+        <div class="product-gallery">
+            <div class="main-image" id="mainImageBlock">
+                <img id="currentMainImg" src="https://content2.flowwow-images.com/data/flowers/1000x1000/24/1730124549_28688724.jpg">
+            </div>
+            <div class="thumbnail-row" id="thumbnailsList">
+                <img class="thumbnail active" src="https://content2.flowwow-images.com/data/flowers/1000x1000/24/1730124549_28688724.jpg" alt="фото 1" data-index="0">
+                <img class="thumbnail" src="https://content2.flowwow-images.com/data/flowers/1000x1000/32/1729676941_92152132.jpg" alt="фото 2" data-index="1">
+                <img class="thumbnail" src="https://content2.flowwow-images.com/data/flowers/1000x1000/74/1710330209_68662974.jpg" alt="фото 3" data-index="2">
+                <img class="thumbnail" src="https://content2.flowwow-images.com/data/flowers/1000x1000/64/1729684380_72841164.jpg" alt="фото 4" data-index="3">
+                <img class="thumbnail" src="https://content2.flowwow-images.com/data/flowers/1000x1000/68/1730124251_83391068.jpg" alt="фото 5" data-index="4">
+            </div>
+        </div>
+
+        <!-- Правая колонка: информация о торте -->
+        <div class="product-info">
+            <h1 class="product-title">Медовик классический из цельнозерновой муки</h1>
+
+            <div class="price-block">
+                <span class="price">3 500 руб.</span> <span class="price-unit">/шт
+            </div>
+
+                <!-- СОСТАВ -->
+        <div class="info-card">
+            <div class="info-header">
+                <i></i>СОСТАВ
+            </div>
+            <div class="info-text">
+                - ц/з мука<br>
+                - кокосовый сахар<br>
+                - лен, мед/топинамбур<br>
+                - кокосовое молоко<br>
+                - кукурузный крахмал<br>
+                - кокосовое масло
+            </div>
+        </div>
+                        <!-- ВЫБОР НАЧИНКИ -->
+        <div class="filling-section">
+            <div class="filling-title">Начинка</div>
+            <div class="filling-options">
+                <label class="filling-option">
+                    <input type="radio" name="filling" value="oblepihovy_kurd">
+                    <span>Подсластитель мёд</span>
+                </label>
+                <label class="filling-option">
+                    <input type="radio" name="filling" value="limonny_kurd">
+                    <span>Подсластитель топинамбур</span>
+                </label>
+            </div>
+        </div>
+            <!-- КАЛОРИЙНОСТЬ (без блока ДЕТАЛИ) -->
+            <div class="calories-block">
+                <div class="calories-title">
+                    <i></i>Пищевая ценность на 100 г
+                </div>
+                <div class="calories-value">
+                    белки - 4 г<br>
+                    жиры - 16 г<br>
+                    углеводы - 34 г<br>
+                    Энергетическая ценность - 302 ккал<br>
+                </div>
+                <div class="badge">Авторский рецепт</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== ДЕТАЛЬНОЕ ОПИСАНИЕ СНИЗУ ===== -->
+    <div class="calories-block">
+        <div class="calories-title">Описание</div>
+        <div class="description-text">
+            Нежные коржи в сочетании с легким заварным крем с карамельной ноткой.<br><br>
+            Декор ягодами оплачивается отдельно, добавьте ягоды из ассортимента магазина в корзину.<br><br>
+            Декор ягодами +700 руб.<br>
+        </div>
+    </div>
+</main>
+
+<!-- Модальное окно для свайпов -->
+<div id="fullscreenModal" class="modal-full">
+    <div class="close-modal" id="closeModalBtn">&times;</div>
+    <div class="nav-btn nav-prev" id="modalPrevBtn">❮</div>
+    <div class="nav-btn nav-next" id="modalNextBtn">❯</div>
+    <div class="modal-content">
+        <img class="modal-image" id="modalFullImage" src="" alt="Увеличенное фото">
+    </div>
+    <div class="image-counter-modal" id="modalCounter">1 / 5</div>
+</div>
+
+<script>
+    (function() {
+        const imagesList = [
+            "https://content2.flowwow-images.com/data/flowers/1000x1000/24/1730124549_28688724.jpg",
+            "https://content2.flowwow-images.com/data/flowers/1000x1000/32/1729676941_92152132.jpg",
+            "https://content2.flowwow-images.com/data/flowers/1000x1000/51/1729676941_68529551.jpg",
+            "https://content2.flowwow-images.com/data/flowers/1000x1000/64/1729684380_72841164.jpg",
+            "https://content2.flowwow-images.com/data/flowers/1000x1000/68/1730124251_83391068.jpg"
+        ];
+        let currentModalIndex = 0;
+        
+        const mainImg = document.getElementById('currentMainImg');
+        const thumbnails = document.querySelectorAll('.thumbnail');
+        const modal = document.getElementById('fullscreenModal');
+        const modalImg = document.getElementById('modalFullImage');
+        const modalCounterSpan = document.getElementById('modalCounter');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+        const modalPrev = document.getElementById('modalPrevBtn');
+        const modalNext = document.getElementById('modalNextBtn');
+        const mainImageBlock = document.getElementById('mainImageBlock');
+        
+        function setActiveThumbnail(index) {
+            thumbnails.forEach((thumb, i) => {
+                if (i === index) thumb.classList.add('active');
+                else thumb.classList.remove('active');
+            });
+            if (imagesList[index]) mainImg.src = imagesList[index];
+        }
+        
+        function openModal(index) {
+            currentModalIndex = index;
+            modalImg.src = imagesList[currentModalIndex];
+            modalCounterSpan.innerText = `${currentModalIndex + 1} / ${imagesList.length}`;
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal() {
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+        
+        function nextModalImage() {
+            currentModalIndex = (currentModalIndex + 1) % imagesList.length;
+            modalImg.src = imagesList[currentModalIndex];
+            modalCounterSpan.innerText = `${currentModalIndex + 1} / ${imagesList.length}`;
+        }
+        
+        function prevModalImage() {
+            currentModalIndex = (currentModalIndex - 1 + imagesList.length) % imagesList.length;
+            modalImg.src = imagesList[currentModalIndex];
+            modalCounterSpan.innerText = `${currentModalIndex + 1} / ${imagesList.length}`;
+        }
+        
+        thumbnails.forEach((thumb, idx) => {
+            thumb.addEventListener('click', () => setActiveThumbnail(idx));
+        });
+        
+        if (mainImageBlock) {
+            mainImageBlock.addEventListener('click', () => {
+                const activeThumb = document.querySelector('.thumbnail.active');
+                let activeIndex = 0;
+                if (activeThumb && activeThumb.getAttribute('data-index') !== null) {
+                    activeIndex = parseInt(activeThumb.getAttribute('data-index'));
+                } else {
+                    const currentSrc = mainImg.src;
+                    const foundIndex = imagesList.findIndex(img => img === currentSrc);
+                    activeIndex = foundIndex !== -1 ? foundIndex : 0;
+                }
+                openModal(activeIndex);
+            });
+        }
+        
+        closeModalBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+        modalPrev.addEventListener('click', prevModalImage);
+        modalNext.addEventListener('click', nextModalImage);
+        
+        // Свайпы для мобильных
+        let touchStartX = 0, touchStartY = 0;
+        modal.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+            touchStartY = e.changedTouches[0].screenY;
+        }, { passive: false });
+        
+        modal.addEventListener('touchend', (e) => {
+            const deltaX = e.changedTouches[0].screenX - touchStartX;
+            const deltaY = e.changedTouches[0].screenY - touchStartY;
+            const minSwipe = 45;
+            if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > minSwipe) {
+                if (deltaX > 0) prevModalImage();
+                else nextModalImage();
+                e.preventDefault();
+            } else if (deltaY > minSwipe && Math.abs(deltaY) > Math.abs(deltaX)) {
+                closeModal();
+                e.preventDefault();
+            }
+        });
+        
+        modal.addEventListener('touchmove', (e) => e.preventDefault(), { passive: false });
+        
+        document.addEventListener('keydown', (e) => {
+            if (modal.style.display === 'flex') {
+                if (e.key === 'ArrowLeft') { prevModalImage(); e.preventDefault(); }
+                else if (e.key === 'ArrowRight') { nextModalImage(); e.preventDefault(); }
+                else if (e.key === 'Escape') { closeModal(); e.preventDefault(); }
+            }
+        });
+        
+        setActiveThumbnail(0);
+    })();
+</script>
+</body>
+</html>

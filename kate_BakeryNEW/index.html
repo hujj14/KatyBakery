@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>KatyBakery — авторские десерты без глютена и сахара</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #FEFAF5;
+            font-family: 'Inter', sans-serif;
+            color: #2C221B;
+            line-height: 1.4;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        h1, h2, h3, .logo, .serif-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        /* HEADER */
+        .site-header {
+            background: #FFFFFF;
+            padding: 1rem 2rem;
+            border-bottom: 1px solid #F0E3D8;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #5C3B1F;
+            text-decoration: none;
+            transition: opacity 0.2s ease;
+        }
+
+        .logo:hover {
+            opacity: 0.8;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 1.8rem;
+        }
+
+        .social-links-header {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links-header a {
+            color: #5C3B1F;
+            font-size: 1.5rem;
+            transition: transform 0.2s, color 0.2s;
+        }
+
+        .social-links-header a:hover {
+            color: #B16233;
+            transform: scale(1.05);
+        }
+
+        .phone-link {
+            font-family: 'Inter', monospace;
+            font-weight: 500;
+            font-size: 1rem;
+            background: #F9EFE7;
+            padding: 0.5rem 1rem;
+            border-radius: 60px;
+            color: #4F2D15;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s;
+        }
+
+        .phone-link:hover {
+            background: #EEDDCB;
+            color: #2C1A0C;
+        }
+
+        /* ===== БЛОК С ТЕКСТОМ И ФОТО (ФОТО СЛЕВА) ===== */
+        .about-section {
+            max-width: 1200px;
+            margin: 2rem auto 0;
+            padding: 2rem;
+            background: white;
+            border-radius: 32px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .about-photo {
+            flex: 0.8;
+            min-width: 250px;
+            border-radius: 24px;
+            overflow: hidden;
+        }
+
+        .about-photo img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+            /* Убираем любые размытия */
+            image-rendering: crisp-edges;
+            image-rendering: pixelated;
+        }
+
+        .about-text {
+            flex: 1.2;
+            min-width: 280px;
+        }
+
+        .about-text p {
+            font-size: 1.08rem;
+            line-height: 1.6;
+            color: #3E2C21;
+            font-weight: 400;
+            margin-bottom: 1rem;
+        }
+
+        .about-text .signature {
+            margin-top: 1rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            color: #C29776;
+            font-weight: 600;
+        }
+
+        /* GALLERY */
+        .products-grid {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 1rem 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            flex: 1;
+        }
+
+        .product-card {
+            background: #FFFFFF;
+            border-radius: 28px;
+            overflow: hidden;
+            transition: all 0.25s ease;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.02), 0 2px 4px rgba(0, 0, 0, 0.03);
+            border: 1px solid #F8EDE2;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 30px -12px rgba(75, 45, 23, 0.1);
+            border-color: #E8D5C4;
+        }
+
+        .product-link {
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .product-img-container {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            background: #FBF5EF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .product-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .product-card:hover .product-img-container img {
+            transform: scale(1.02);
+        }
+
+        .product-info {
+            padding: 1.2rem 1rem 1.4rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .product-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 700;
+            font-size: 1.35rem;
+            color: #3C2518;
+            margin-bottom: 0.75rem;
+            line-height: 1.3;
+        }
+
+        .product-price {
+            font-weight: 500;
+            color: #AD7A52;
+            font-size: 1rem;
+            letter-spacing: 0.3px;
+            background: #FCF6F0;
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            margin-top: auto;
+            align-self: center;
+        }
+
+        .order-hint {
+            text-align: center;
+            font-size: 0.75rem;
+            color: #8B694C;
+            margin-top: -1rem;
+            margin-bottom: 1rem;
+        }
+
+        /* ===== КРАСИВЫЙ ФУТТЕР ===== */
+        .site-footer {
+            background: linear-gradient(135deg, #1F1A14 0%, #2C241A 100%);
+            color: #D4C5B8;
+            margin-top: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .site-footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #C29776, #E8D5C4, #C29776);
+        }
+
+        .footer-top {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 3rem 2rem 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-column h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #FFFFFF;
+            margin-bottom: 1.2rem;
+            letter-spacing: 0.5px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-column h4::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: #C29776;
+            border-radius: 2px;
+        }
+
+        .footer-column p, .footer-column a {
+            color: #D4C5B8;
+            font-size: 0.85rem;
+            line-height: 1.8;
+            text-decoration: none;
+            display: block;
+            transition: all 0.3s ease;
+        }
+
+        .footer-column a:hover {
+            color: #C29776;
+            transform: translateX(5px);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .footer-social a {
+            font-size: 1.4rem;
+            color: #D4C5B8;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            color: #C29776;
+            transform: translateY(-3px);
+        }
+
+        .payment-icons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 0.5rem;
+        }
+
+        .payment-icons i {
+            font-size: 2rem;
+            color: #D4C5B8;
+            transition: all 0.3s ease;
+        }
+
+        .payment-icons i:hover {
+            color: #C29776;
+            transform: scale(1.1);
+        }
+
+        .newsletter-form {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            margin-top: 0.5rem;
+        }
+
+        .newsletter-input {
+            padding: 0.8rem 1rem;
+            border-radius: 40px;
+            border: none;
+            background: #3D352C;
+            color: white;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-input:focus {
+            outline: none;
+            background: #4D443A;
+            box-shadow: 0 0 0 2px #C29776;
+        }
+
+        .newsletter-input::placeholder {
+            color: #A09080;
+        }
+
+        .newsletter-btn {
+            background: linear-gradient(135deg, #C29776, #AD7A52);
+            border: none;
+            padding: 0.8rem;
+            border-radius: 40px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-btn:hover {
+            background: linear-gradient(135deg, #AD7A52, #9B6E4C);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(194, 151, 118, 0.3);
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.75rem;
+            color: #A09080;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #A09080;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .footer-links a:hover {
+            color: #C29776;
+        }
+
+        @media (max-width: 780px) {
+            .about-section {
+                flex-direction: column;
+                text-align: center;
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+            .about-photo {
+                order: 1;
+            }
+            .about-text {
+                order: 2;
+            }
+            .products-grid {
+                padding: 1rem;
+                gap: 1.2rem;
+            }
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            .header-right {
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+            .footer-top {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .footer-column h4::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            .footer-social {
+                justify-content: center;
+            }
+            .payment-icons {
+                justify-content: center;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+            .footer-links {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 530px) {
+            .product-name {
+                font-size: 1.1rem;
+            }
+            .logo {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="site-header">
+    <div class="header-container">
+        <a href="#" class="logo">KatyBakery</a>
+        <div class="header-right">
+            <div class="social-links-header">
+                <a href="https://instagram.com/katy_bakery.msk?igshid=NTc4MTIwNjQ2YQ==" target="_blank" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://web.telegram.org/a/#1116194195" target="_blank" aria-label="Telegram">
+                    <i class="fab fa-telegram-plane"></i>
+                </a>
+            </div>
+            <a href="tel:+79163066616" class="phone-link">
+                <i class="fas fa-phone-alt"></i> +7 (916) 306-66-16
+            </a>
+        </div>
+    </div>
+</header>
+
+<main>
+    <!-- ===== БЛОК С ТЕКСТОМ И ФОТО (ФОТО СЛЕВА) ===== -->
+    <div class="about-section">
+        <div class="about-photo">
+            <img src="https://mail.google.com/mail/u/0?ui=2&ik=06a274a430&attid=0.1&permmsgid=msg-a:r994387688882014973&th=19e08f14b26c984c&view=fimg&fur=ip&permmsgid=msg-a:r994387688882014973&sz=s0-l75-ft&attbid=ANGjdJ_Z_wQkfBC8qkSc9Vp5CoJk4Z_YJnje7Rjynrtb-YU27VPOp4Cpq7j5wYcK2C8DBvGYPZvlpAtZA0RSSH-Tnu5q09sFm0w8KHwWhZhFlotOmBM1G4qrkUJS_nY&disp=emb&realattid=2D678369-1D03-4003-A554-BA00CC8EFB19&zw" alt="Катя из KatyBakery">
+        </div>
+        <div class="about-text">
+            <p>Привет! Меня зовут Катя<br><br> И я приготовлю для вас уникальные десерты на растительной основе, которые подойдут для вегетарианцев, детей раннего возраста и людей, имеющих пищевые ограничения.</p>
+        </div>
+    </div>
+
+    <div class="products-grid">
+        <!-- 1 -->
+        <div class="product-card">
+            <a href="firstCake.html" class="product-link">
+                <div class="product-img-container">
+                    <img src="https://content3.flowwow-images.com/data/flowers/524x524/69/1710330209_7100569.jpg" alt="Шоколадное безумие">
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Шоколадное безумие</div>
+                    <div class="product-price">4200₽/кг</div>
+                </div>
+            </a>
+        </div>
+        <!-- 2 -->
+        <div class="product-card">
+            <a href="secondCake.html" class="product-link">
+                <div class="product-img-container">
+                    <img src="https://content3.flowwow-images.com/data/flowers/1000x1000/06/1710330897_1541906.jpg" alt="Малина со сливками">
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Малина со сливками</div>
+                    <div class="product-price">4200₽/кг</div>
+                </div>
+            </a>
+        </div>
+        <!-- 3 -->
+        <div class="product-card">
+            <a href="thirdCake.html" class="product-link">
+                <div class="product-img-container">
+                    <img src="https://content2.flowwow-images.com/data/flowers/524x524/67/1730190597_41511967.jpg" alt="Лимонный медовик с облепиховым курдом">
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Лимонный медовик с облепиховым курдом</div>
+                    <div class="product-price">3800₽/кг</div>
+                </div>
+            </a>
+        </div>
+        <!-- 4 -->
+        <div class="product-card">
+            <a href="fouthCake.html" class="product-link">
+                <div class="product-img-container">
+                    <img src="https://content2.flowwow-images.com/data/flowers/524x524/44/1729680671_78865044.jpg" alt="Шоколадный медовик">
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Шоколадный медовик</div>
+                    <div class="product-price">4300₽/кг</div>
+                </div>
+            </a>
+        </div>
+        <!-- 5 -->
+        <div class="product-card">
+            <a href="fithCake.html" class="product-link">
+                <div class="product-img-container">
+                    <img src="https://content2.flowwow-images.com/data/flowers/524x524/04/1730124711_47873304.jpg" alt="Птичье молоко">
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Птичье Молоко</div>
+                    <div class="product-price">2500₽/кг</div>
+                </div>
+            </a>
+        </div>
+        <!-- 6 -->
+        <div class="product-card">
+            <a href="sixthCake.html" class="product-link">
+                <div class="product-img-container">
+                    <img src="https://content2.flowwow-images.com/data/flowers/1000x1000/40/1730125796_28684340.jpg" alt="Панчо">
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Панчо</div>
+                    <div class="product-price">3800₽/кг</div>
+                </div>
+            </a>
+        </div>
+        <!-- 7 -->
+        <div class="product-card">
+            <a href="sevenCake.html" class="product-link">
+                <div class="product-img-container">
+                    <img src="https://content2.flowwow-images.com/data/flowers/524x524/63/1730130274_99479263.jpg" alt="Кето торт на эритрите «Пломбир - апельсин»">
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Кето торт на эритрите «Пломбир - апельсин»</div>
+                    <div class="product-price">4200₽/кг</div>
+                </div>
+            </a>
+        </div>
+        <!-- 8 -->
+        <div class="product-card">
+            <a href="eightCake.html" class="product-link">
+                <div class="product-img-container">
+                    <img src="https://content2.flowwow-images.com/data/flowers/524x524/84/1736431339_99549584.jpg" alt="Манговый тарт без сахара">
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Манговый тарт без сахара</div>
+                    <div class="product-price">2100₽/кг</div>
+                </div>
+            </a>
+        </div>
+        <!-- 9 -->
+        <div class="product-card">
+            <a href="nineCake.html" class="product-link">
+                <div class="product-img-container">
+                    <img src="https://content2.flowwow-images.com/data/flowers/524x524/40/1736437203_76401440.jpg" alt="Тарт большой манговый без сахара">
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Тарт большой манговый без сахара</div>
+                    <div class="product-price">2900₽/кг</div>
+                </div>
+            </a>
+        </div>
+        <!-- 10 -->
+        <div class="product-card">
+            <a href="tenCake.html" class="product-link">
+                <div class="product-img-container">
+                    <img src="https://content2.flowwow-images.com/data/flowers/524x524/24/1730124549_28688724.jpg" alt="Медовик классический из цельнозерновой муки">
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Медовик классический из цельнозерновой муки</div>
+                    <div class="product-price">3500₽/кг</div>
+                </div>
+            </a>
+        </div>
+        <!-- 11 -->
+        <div class="product-card">
+            <a href="elevenCake.html" class="product-link">
+                <div class="product-img-container">
+                    <img src="https://content3.flowwow-images.com/data/flowers/524x524/85/1730190636_1589385.jpg" alt="Медовик миндальный с малиной">
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Медовик миндальный с малиной</div>
+                    <div class="product-price">3500₽/кг</div>
+                </div>
+            </a>
+        </div>
+        <!-- 12 -->
+        <div class="product-card">
+            <a href="twelveCake.html" class="product-link">
+                <div class="product-img-container">
+                    <img src="https://content2.flowwow-images.com/data/flowers/1000x1000/25/1750496058_25666925.jpg" alt="Медовик «Сникерс»">
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Медовик «Сникерс»</div>
+                    <div class="product-price">4300₽/кг</div>
+                </div>
+            </a>
+        </div>
+        <!-- 13 -->
+        <div class="product-card">
+            <a href="thirteen.html" class="product-link">
+                <div class="product-img-container">
+                    <img src="https://content2.flowwow-images.com/data/flowers/1000x1000/62/1752305253_79434462.jpg" alt="Чизкейк смородиновый «лаванда»">
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Чизкейк смородиновый «лаванда»</div>
+                    <div class="product-price">3800₽/кг</div>
+                </div>
+            </a>
+        </div>
+        <!-- 14 -->
+        <div class="product-card">
+            <a href="fourteenCake.html" class="product-link">
+                <div class="product-img-container">
+                    <img src="https://content2.flowwow-images.com/data/flowers/1000x1000/69/1753877098_62301669.jpg" alt="Чизкейк «Дубайский»">
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Чизкейк «Дубайский»</div>
+                    <div class="product-price">4600₽/кг</div>
+                </div>
+            </a>
+        </div>
+        <!-- 15 -->
+        <div class="product-card">
+            <a href="fifteenCake.html" class="product-link">
+                <div class="product-img-container">
+                    <img src="https://content2.flowwow-images.com/data/flowers/1000x1000/46/1763994163_25887646.jpg" alt="Лимонный медовик на ц/з муке">
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Лимонный медовик на ц/з муке</div>
+                    <div class="product-price">3800₽/кг</div>
+                </div>
+            </a>
+        </div>
+         <!-- 16 -->
+        <div class="product-card">
+            <a href="sixteenCake.html" class="product-link">
+                <div class="product-img-container">
+                    <img src="https://content2.flowwow-images.com/data/flowers/1000x1000/20/1770720523_36119920.jpg" alt="Медовик с малиной из ц/з муки">
+                </div>
+                <div class="product-info">
+                    <div class="product-name">Медовик с малиной из ц/з муки</div>
+                    <div class="product-price">4300₽/кг</div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="order-hint">
+        📞 Для заказа свяжитесь по телефону или в соцсетях — приготовим специально для вас
+    </div>
+</main>
+
+<!-- ===== КРАСИВЫЙ ФУТТЕР ===== -->
+<footer class="site-footer">
+    <div class="footer-top">
+        <div class="footer-column">
+            <h4>KatyBakery</h4>
+            <p>Авторские десерты без глютена и сахара</p>
+            <p>Только натуральные ингредиенты</p>
+            <p>Ручная работа с любовью</p>
+        </div>
+
+        <div class="footer-column">
+            <h4>Информация</h4>
+            <a href="#">О нас</a>
+            <a href="#">Контакты</a>
+        </div>
+
+        <div class="footer-column">
+            <h4>Контакты</h4>
+            <p><i class="fas fa-phone-alt"></i> <a href="tel:+79163066616">+7 (916) 306-66-16</a></p>
+            <p><i class="fab fa-instagram"></i> <a href="https://instagram.com/katy_bakery.msk?igshid=NTc4MTIwNjQ2YQ==" target="_blank">Instagram</a></p>
+            <p><i class="fab fa-telegram-plane"></i> <a href="https://web.telegram.org/a/#1116194195" target="_blank">Telegram</a></p>
+        </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <div>© 2025 KatyBakery — натуральные десерты для здоровья и гармонии</div>
+        <div class="footer-links">
+            <a>Пользовательское соглашение</a>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Плавное появление карточек
+    document.addEventListener('DOMContentLoaded', () => {
+        const cards = document.querySelectorAll('.product-card');
+        if (cards.length) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.05, rootMargin: '20px' });
+            
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(12px)';
+                card.style.transition = 'opacity 0.4s ease, transform 0.35s ease';
+                observer.observe(card);
+            });
+        }
+
+        const productLinks = document.querySelectorAll('.product-link');
+        productLinks.forEach(link => {
+            link.setAttribute('target', '_self');
+        });
+    });
+</script>
+</body>
+</html>
