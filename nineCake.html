@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Тарт большой манговый без сахара - KatyBakery</title>
+    <title>Шоколадное безумие - KatyBakery</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet">
@@ -413,6 +413,53 @@
                 font-size: 1.2rem;
             }
         }
+                
+                .filling-section {
+            margin: 20px 0;
+            background: white;
+            border-radius: 20px;
+            padding: 16px 20px;
+            border: 1px solid #f0e4d8;
+        }
+
+        .filling-title {
+            font-weight: 700;
+            font-size: 1rem;
+            color: #5c3b1f;
+            margin-bottom: 14px;
+            letter-spacing: 0.5px;
+        }
+
+        .filling-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .filling-option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            color: #3e3328;
+        }
+
+        .filling-option input[type="radio"] {
+            width: 18px;
+            height: 18px;
+            accent-color: #c29776;
+            cursor: pointer;
+            margin: 0;
+        }
+
+        .filling-option span {
+            cursor: pointer;
+        }
+
+        .filling-option:hover {
+            color: #9b6e4c;
+        }
     </style>
 </head>
 <body>
@@ -429,23 +476,23 @@
         <!-- Левая колонка: галерея -->
         <div class="product-gallery">
             <div class="main-image" id="mainImageBlock">
-                <img id="currentMainImg" src="https://content2.flowwow-images.com/data/flowers/524x524/40/1736437203_76401440.jpg">
+                <img id="currentMainImg" src="https://content2.flowwow-images.com/data/flowers/1000x1000/24/1730124549_28688724.jpg">
             </div>
             <div class="thumbnail-row" id="thumbnailsList">
-                <img class="thumbnail active" src="https://content2.flowwow-images.com/data/flowers/524x524/40/1736437203_76401440.jpg" alt="фото 1" data-index="0">
-                <img class="thumbnail" src="https://content2.flowwow-images.com/data/flowers/1000x1000/37/1736437204_74965537.jpg" alt="фото 2" data-index="1">
-                <img class="thumbnail" src="https://content2.flowwow-images.com/data/flowers/1000x1000/48/1736437204_22281548.jpg" alt="фото 3" data-index="2">
-                <img class="thumbnail" src="https://content2.flowwow-images.com/data/flowers/1000x1000/29/1736437205_85611629.jpg" alt="фото 4" data-index="3">
-                <img class="thumbnail" src="https://content2.flowwow-images.com/data/flowers/1000x1000/98/1730123906_64581698.jpg" alt="фото 5" data-index="4">
+                <img class="thumbnail active" src="https://content2.flowwow-images.com/data/flowers/1000x1000/24/1730124549_28688724.jpg" alt="фото 1" data-index="0">
+                <img class="thumbnail" src="https://content2.flowwow-images.com/data/flowers/1000x1000/32/1729676941_92152132.jpg" alt="фото 2" data-index="1">
+                <img class="thumbnail" src="https://content2.flowwow-images.com/data/flowers/1000x1000/74/1710330209_68662974.jpg" alt="фото 3" data-index="2">
+                <img class="thumbnail" src="https://content2.flowwow-images.com/data/flowers/1000x1000/64/1729684380_72841164.jpg" alt="фото 4" data-index="3">
+                <img class="thumbnail" src="https://content2.flowwow-images.com/data/flowers/1000x1000/68/1730124251_83391068.jpg" alt="фото 5" data-index="4">
             </div>
         </div>
 
         <!-- Правая колонка: информация о торте -->
         <div class="product-info">
-            <h1 class="product-title">Тарт большой манговый без сахара</h1>
+            <h1 class="product-title">Медовик классический из цельнозерновой муки</h1>
 
             <div class="price-block">
-                <span class="price">2 900 руб.</span> <span class="price-unit">/шт
+                <span class="price">3 500 руб.</span> <span class="price-unit">/шт
             </div>
 
                 <!-- СОСТАВ -->
@@ -454,14 +501,26 @@
                 <i></i>СОСТАВ
             </div>
             <div class="info-text">
-            - мука миндальная<br>
-            - мука нутовая и рисовая ц/з<br>
-            - пюре манго<br>
-            - урбеч кешью<br>
-            - кокосовое масло<br>
-            - кокосовое молоко<br>
-            - лимонный сок<br>
-            - пектин, агар-агар
+                - ц/з мука<br>
+                - кокосовый сахар<br>
+                - лен, мед/топинамбур<br>
+                - кокосовое молоко<br>
+                - кукурузный крахмал<br>
+                - кокосовое масло
+            </div>
+        </div>
+                        <!-- ВЫБОР НАЧИНКИ -->
+        <div class="filling-section">
+            <div class="filling-title">Начинка</div>
+            <div class="filling-options">
+                <label class="filling-option">
+                    <input type="radio" name="filling" value="oblepihovy_kurd">
+                    <span>Подсластитель мёд</span>
+                </label>
+                <label class="filling-option">
+                    <input type="radio" name="filling" value="limonny_kurd">
+                    <span>Подсластитель топинамбур</span>
+                </label>
             </div>
         </div>
             <!-- КАЛОРИЙНОСТЬ (без блока ДЕТАЛИ) -->
@@ -470,10 +529,10 @@
                     <i></i>Пищевая ценность на 100 г
                 </div>
                 <div class="calories-value">
-                    белки - 5 г<br>
-                    жиры - 18 г<br>
-                    углеводы - 15 г<br>
-                    Энергетическая ценность - 240 ккал<br>
+                    белки - 4 г<br>
+                    жиры - 16 г<br>
+                    углеводы - 34 г<br>
+                    Энергетическая ценность - 302 ккал<br>
                 </div>
                 <div class="badge">Авторский рецепт</div>
             </div>
@@ -484,11 +543,9 @@
     <div class="calories-block">
         <div class="calories-title">Описание</div>
         <div class="description-text">
-           Манговый тарт без каких-либо подсластителей! Сладость достигается только за счет манго. Легкая кислинка для любителей неприторных десертов.<br>
-            Миндальная основа и сочная начинка не оставит никого равнодушным! Все ингредиенты на растительной основе, без красителей и усилителей вкуса.<br>
-            Цена указана за тарт весом 700 гр. (18 см) с декором в виде
-            сублимированных ягод (малина или манго)<br><br>
-            Ягодный декор оплачивается отдельно + 700 руб
+            Нежные коржи в сочетании с легким заварным крем с карамельной ноткой.<br><br>
+            Декор ягодами оплачивается отдельно, добавьте ягоды из ассортимента магазина в корзину.<br><br>
+            Декор ягодами +700 руб.<br>
         </div>
     </div>
 </main>
@@ -507,11 +564,11 @@
 <script>
     (function() {
         const imagesList = [
-            "https://content2.flowwow-images.com/data/flowers/524x524/40/1736437203_76401440.jpg",
-            "https://content2.flowwow-images.com/data/flowers/1000x1000/37/1736437204_74965537.jpg",
-            "https://content2.flowwow-images.com/data/flowers/1000x1000/48/1736437204_22281548.jpg",
-            "https://content2.flowwow-images.com/data/flowers/1000x1000/29/1736437205_85611629.jpg",
-            "https://content2.flowwow-images.com/data/flowers/1000x1000/98/1730123906_64581698.jpg"
+            "https://content2.flowwow-images.com/data/flowers/1000x1000/24/1730124549_28688724.jpg",
+            "https://content2.flowwow-images.com/data/flowers/1000x1000/32/1729676941_92152132.jpg",
+            "https://content2.flowwow-images.com/data/flowers/1000x1000/51/1729676941_68529551.jpg",
+            "https://content2.flowwow-images.com/data/flowers/1000x1000/64/1729684380_72841164.jpg",
+            "https://content2.flowwow-images.com/data/flowers/1000x1000/68/1730124251_83391068.jpg"
         ];
         let currentModalIndex = 0;
         
